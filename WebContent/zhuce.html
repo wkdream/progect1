@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页面</title>
+<link rel="stylesheet" href="css/supersized.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	function login() {
+		$("#errorno").html("");
+		$("#errorpassword").html("");
+		$("#errorpasswordagain").html("");
+		$("#errorphone").html("");
+		$("#errorsect").html("");
+		$("#errorno").show();
+		$("#errorpassword").show();
+		$("#errorpasswordagain").show();
+		$("#errorphone").show();
+		$("#errorsect").show();
+		var no = $("#no").val();
+		var name = $("#name").val();
+		var password = $("#password").val();
+		var passwordagain = $("#passwordagain").val();
+		var phone = $("#phone").val();
+		var weizhi = $("#sect").val();
+		if (no == "") {
+			$("#errorno").html("昵称不能为空！");
+			$("#errorno").show();
+		} else if (password == "") {
+			$("#errorpassword").html("密码不能为空！");
+			$("#errorpassword").show();
+		} else if (passwordagain == "") {
+			$("#errorpasswordagain").html("请再次输入密码！");
+			$("#errorpasswordagain").show();
+		} else if (passwordagain != password) {
+			$("#errorpasswordagain").html("两次输入的密码不一致！");
+			$("#errorpasswordagain").show();
+		} else if (phone == "") {
+			$("#errorphone").html("联系方式不能为空！");
+			$("#errorphone").show();
+		} else if (phone < 10000000000) {
+			$("#errorphone").html("请输入正确的联系方式！");
+			$("#errorphone").show();
+		} else if (weizhi == "请选择路线") {
+			$("#errorsect").html("请选择一条路线！");
+			$("#errorsect").show();
+		} else {
+			$.ajax({
+				type : "post",
+				url : "zhuce",
+				data : {
+					"no" : no,
+					"password" : password,
+					"name" : name,
+					"phone" : phone,
+					"weizhi" : weizhi
+				},
+				success : function(msg) {
+					if (msg == "success") {
+						alert("恭喜你！注册成功！");
+						location.href = "denglu.jsp";
+					} else {
+						$("#errorno").html("该昵称已存在，请稍后再试！");
+						$("#errorno").show();
+					}
+				}
+
+			});
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="login_box">
+		<div align="center">
+			<strong><h1>欢迎注册</h1></strong>
+		</div>
+		<br> <br>
+		<form>
+			<div class="form-group" align="center">
+				<label class="t">请输入昵称：</label> <input id="no" type="text"
+					class="form-control x319 in" placeholder="请输入以字母开头的昵称">
+			</div>
+			<div align="center" class="am-alert am-alert-warning" data-am-alert
+				style="display: none" id="errorno"></div>
+			<div class="form-group" align="center">
+				<label class="t">请输入密码：</label> <input type="password" id="password"
+					placeholder="这将作为您的登录密码" class="password form-control x319 in">
+			</div>
+			<div align="center" class="am-alert am-alert-warning" data-am-alert
+				style="display: none" id="errorpassword"></div>
+			<div align="center" class="form-group">
+				<label class="t">请确认密码：</label> <input type="password"
+					id="passwordagain" placeholder="要与上面的密码一致哦"
+					class="password form-control x319 in">
+			</div>
+			<div align="center" class="am-alert am-alert-warning" data-am-alert
+				style="display: none" id="errorpasswordagain"></div>
+			<div align="center" class="form-group">
+				<label class="t">您的姓名：</label> <input id="name" type="text"
+					placeholder="更方便我们记得您" class="form-control x319 in">
+			</div>
+			<div align="center" class="form-group">
+				<label class="t">您的联系方式：</label> <input type="text" id="phone"
+					placeholder="这将成为您找回密码的依据" class="password form-control x319 in">
+			</div>
+			<div align="center" class="am-alert am-alert-warning" data-am-alert
+				style="display: none" id="errorphone"></div>
+			<div align="center" class="form-group">
+				<label class="t">您最喜欢的路线：</label> <select id="sect"
+					class="password form-control x319 in">
+					<option>请选择路线</option>
+					<option>上路</option>
+					<option>下路</option>
+					<option>中路</option>
+					<option>辅助</option>
+					<option>打野</option>
+				</select>
+			</div>
+			<div align="center" class="am-alert am-alert-warning" data-am-alert
+				style="display: none" id="errorsect"></div>
+			<div align="center" class="form-group space">
+				<button type="button" class="btn btn-primary btn-lg"
+					onclick="login()">&nbsp;提&nbsp;交&nbsp;</button>
+				<input type="reset" value="&nbsp;重&nbsp;置&nbsp;"
+					class="btn btn-default btn-lg">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

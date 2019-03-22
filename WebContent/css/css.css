@@ -1,0 +1,90 @@
+body{
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	line-height: 0px;
+	/*background-image: url(../img/timg.jpg);
+	background-size: 100%;*/
+}
+/*<body>样式*/
+a:link{
+	color: #333333;
+	text-decoration: none;
+}
+/*<a>未访问效果*/
+a:visited{
+	color: #333333;
+	text-decoration: none;
+}
+/*<a>访问效果*/
+a:hover{
+	text-decoration: underline;
+	color: yellow;
+}
+/*<a>鼠标划过时效果*/
+a:active{
+	text-decoration: none;
+}
+/*<a>鼠标下按时效果*/
+td{
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+}
+/*<td>效果*/
+.border{
+	border: 1px solid #1B85E2;
+}
+/*.border边框样式*/
+.border2{
+	border: 1px solid #FFAE00;
+}
+
+.border3{
+	background-color: #EBEBEB;
+	border: 1px solid #DEDEDE;
+}
+.border100{
+	background: url(../img/fangjiaditu.jpg);
+	background-size: 100%;
+	border: 1px solid #DEDEDE;
+}
+.border4{
+	border: 1px solid #00AD4D;
+}
+.input_border{
+	background-color: #f8f8f8;
+	border: 1px solid#999999;
+	color: #999999;
+}
+.ima_border{
+	border: 1px soild#dedede;
+}
+.font_14{
+	font-size: 14px;
+}
+.font_01{
+	color: #FFFFFF;
+}
+.font_02{
+	color: #000000;
+}
+.font_03{
+	color: #990000;
+	
+}
+.font_04{
+	color: #FFAE00;
+}
+.text{
+	width: 220px;
+	height: 220px;
+	margin: 0 auto;
+	word-break: break-all;
+	word-wrap: break-word;
+	line-height: 150%;
+	font-size: 12px;
+	color: white;
+}
